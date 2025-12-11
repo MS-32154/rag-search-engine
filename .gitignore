@@ -2,3 +2,4 @@ data/
 uv.lock
 cache/
 __pycache__/
+.vscode/
