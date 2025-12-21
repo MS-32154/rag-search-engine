@@ -4,6 +4,7 @@ import argparse
 
 from lib.semantic_search import (
     chunk_text,
+    embed_chunks_command,
     embed_query_text,
     embed_text,
     semantic_chunk_text,
@@ -11,7 +12,6 @@ from lib.semantic_search import (
     verify_embeddings,
     verify_model,
 )
-from lib.chunk_semantic_search import embed_chunks
 
 
 def main() -> None:
@@ -74,7 +74,7 @@ def main() -> None:
     )
 
     subparsers.add_parser(
-        "embed_chunks", help="Verify embeddings for the movie dataset"
+        "embed_chunks", help="Generate embeddings for chunked documents"
     )
 
     args = parser.parse_args()
@@ -95,7 +95,8 @@ def main() -> None:
         case "semantic_chunk":
             semantic_chunk_text(args.text, args.max_chunk_size, args.overlap)
         case "embed_chunks":
-            embed_chunks()
+            embeddings = embed_chunks_command()
+            print(f"Generated {len(embeddings)} chunked embeddings")
         case _:
             parser.print_help()
 
