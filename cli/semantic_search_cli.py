@@ -11,6 +11,7 @@ from lib.semantic_search import (
     verify_embeddings,
     verify_model,
 )
+from lib.chunk_semantic_search import embed_chunks
 
 
 def main() -> None:
@@ -72,6 +73,10 @@ def main() -> None:
         help="Number of sentences to overlap between chunks",
     )
 
+    subparsers.add_parser(
+        "embed_chunks", help="Verify embeddings for the movie dataset"
+    )
+
     args = parser.parse_args()
 
     match args.command:
@@ -89,6 +94,8 @@ def main() -> None:
             chunk_text(args.text, args.chunk_size, args.overlap)
         case "semantic_chunk":
             semantic_chunk_text(args.text, args.max_chunk_size, args.overlap)
+        case "embed_chunks":
+            embed_chunks()
         case _:
             parser.print_help()
 
