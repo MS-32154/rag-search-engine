@@ -102,7 +102,7 @@ def main() -> None:
             for i, res in enumerate(results, 1):
                 print(f"{i}. ({res['id']}) {res['title']} - Score: {res['score']:.2f}")
         case _:
-            parser.print_help()
+            parser.exit(2, parser.format_help())
 
 
 if __name__ == "__main__":
