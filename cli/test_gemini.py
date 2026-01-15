@@ -6,7 +6,7 @@ from google import genai
 load_dotenv()
 api_key = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key)
-model = "gemini-2.5-flash-lite"
+model = "gemini-2.0-flash"
 
 if __name__ == "__main__":
     prompt = "Why is Boot.dev such a great place to learn about RAG? Use one paragraph maximum."
